@@ -57,30 +57,28 @@ end
 
 feature "the goals" do
 
-  before do
-    sign_up_as_scott_bot
-    visit new_session_url
-    fill_in('Username', :with => 'scott_bot')
-    fill_in('Password', :with => 'abcdef')
-    click_button('Sign In')
-  end
-
   scenario "page has Goals" do
+      sign_in_as_scott_bot
     expect(page).to have_content("Goals")
   end
   scenario "page has new goal link" do
+      sign_in_as_scott_bot
     click_link("New Goal")
     expect(page).to have_content("Create Goal")
   end
     scenario "creates a new goal" do
-    click_link("New Goal")
-    fill_in('Body', :with => 'graduate')
-    #check('Completed?')
-    #check('A Checkbox')
-    click_button("Create Goal")
-
+    create_goal_as_scott_bot
     expect(page).to have_content("graduate")
     #expect(page).to have_content("Ongoing")
+  end
+
+  scenario "edits a goal" do
+    create_goal_as_scott_bot
+    click_link("graduate")
+    click_link("Edit")
+    fill_in('Body', :with => 'eat chocolate')
+    click_button("Update")
+    expect(page).to have_content("eat chocolate")
   end
 
 end

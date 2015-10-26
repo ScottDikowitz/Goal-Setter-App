@@ -2,7 +2,8 @@
 <h2>Goals</h2>
 <ul>
 <% @user.goals.each do |goal| %>
-<li><%= goal.body %></li>
+<li> <a href="<%= goal_url(goal) %>"><%= goal.body %></a></li>
+
 <% end %>
 </ul>
 <hr>

@@ -50,3 +50,20 @@ end
 def sign_up_as_scott_bot
   sign_up("scott_bot")
 end
+
+def sign_in_as_scott_bot
+  sign_up_as_scott_bot
+  visit new_session_url
+  fill_in('Username', :with => 'scott_bot')
+  fill_in('Password', :with => 'abcdef')
+  click_button('Sign In')
+end
+
+def create_goal_as_scott_bot
+  sign_in_as_scott_bot
+  click_link("New Goal")
+  fill_in('Body', :with => 'graduate')
+  #check('Completed')
+  #check('Private')
+  click_button("Create Goal")
+end
