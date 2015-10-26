@@ -1,2 +1,7 @@
 <%= @goal.body %><br>
 <a href=<%= edit_goal_url(@goal.id) %>>Edit</a>
+
+<form action="<%= goal_url %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>Delete</button>
+</form>

@@ -81,6 +81,13 @@ feature "the goals" do
     expect(page).to have_content("eat chocolate")
   end
 
+  scenario "deletes a goal" do
+    create_goal_as_scott_bot
+    click_link("eat apples")
+    click_button("Delete")
+    expect(page).to_not have_content("eat apples")
+  end
+
   scenario "scott_bot cannot access private links of other user" do
     create_p_goal_as_jake_bot
     click_button("Sign Out")
