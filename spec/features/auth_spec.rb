@@ -96,4 +96,13 @@ feature "the goals" do
     expect(page).to_not have_content("eat honey")
   end
 
+  scenario "goals can be completed" do
+    create_p_goal_as_jake_bot
+    click_link("eat honey")
+    click_link("Edit")
+    check('Completed')
+    click_button("Update")
+    click_link("eat honey")
+    expect(page).to have_content("Completed")
+  end
 end

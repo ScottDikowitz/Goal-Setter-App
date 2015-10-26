@@ -9,6 +9,10 @@ Edit Goal
 <label>Private:
 <input type="checkbox" name="goal[private]" value="true" <%= "checked" if @goal.private %> >
 </label>
+<label>Completed:
+  <input type="hidden" name="goal[completed]" value="false" >
+<input type="checkbox" name="goal[completed]" value="true" <%= "checked" if @goal.completed %>>
+</label>
 
 <button>Update</button>
 </form>
