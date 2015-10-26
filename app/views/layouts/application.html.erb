@@ -2,11 +2,19 @@
 <html>
 <head>
   <title>GoalSetterApp</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+
 </head>
 <body>
+
+  <% unless current_user.nil? %>
+  <%= current_user.username %>
+  <form action="<%=session_url%>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Sign Out">
+  </form>
+  <hr>
+  <% end %>
 
 <%= yield %>
 
