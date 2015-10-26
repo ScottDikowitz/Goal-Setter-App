@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-
+  before_action :block_private_goal_page, only: [:show]
   def create
     goal = Goal.new(goal_params)
     goal.user_id = current_user.id
@@ -24,6 +24,7 @@ class GoalsController < ApplicationController
       redirect_to user_url(@goal.user_id)
     else
       flash.now[:error] = @goal.errors.full_messages
+      redirect_to user_url(@goal.user_id)
     end
   end
 

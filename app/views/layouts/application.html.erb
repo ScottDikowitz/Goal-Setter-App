@@ -6,7 +6,7 @@
 </head>
 <body>
   <% unless flash[:error].nil? %>
-  <%= flash[:error].join("<br>").html_safe %>
+  <p><%= flash[:error] %></p>
   <% end %>
   <% unless current_user.nil? %>
   <%= current_user.username %>

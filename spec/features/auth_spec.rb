@@ -68,17 +68,25 @@ feature "the goals" do
   end
     scenario "creates a new goal" do
     create_goal_as_scott_bot
-    expect(page).to have_content("graduate")
+    expect(page).to have_content("eat apples")
     #expect(page).to have_content("Ongoing")
   end
 
   scenario "edits a goal" do
     create_goal_as_scott_bot
-    click_link("graduate")
+    click_link("eat apples")
     click_link("Edit")
     fill_in('Body', :with => 'eat chocolate')
     click_button("Update")
     expect(page).to have_content("eat chocolate")
+  end
+
+  scenario "scott_bot cannot access private links of other user" do
+    create_p_goal_as_jake_bot
+    click_button("Sign Out")
+    sign_in_as_scott_bot
+    visit user_url(1)
+    expect(page).to_not have_content("eat honey")
   end
 
 end

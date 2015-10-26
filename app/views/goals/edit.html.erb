@@ -3,9 +3,12 @@ Edit Goal
   <%= auth_token %>
   <input type="hidden" name="_method" value="patch">
 <label>Body
-<input type="text" name="goal[body]" value="<%= @goal.body %>">
+<input type="text" name="goal[body]" value="<%= @goal.body %>" >
 </label>
-
+<input type="hidden" name="goal[private]" value="false">
+<label>Private:
+<input type="checkbox" name="goal[private]" value="true" <%= "checked" if @goal.private %> >
+</label>
 
 <button>Update</button>
 </form>

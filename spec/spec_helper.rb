@@ -62,8 +62,29 @@ end
 def create_goal_as_scott_bot
   sign_in_as_scott_bot
   click_link("New Goal")
-  fill_in('Body', :with => 'graduate')
+  fill_in('Body', :with => 'eat apples')
   #check('Completed')
   #check('Private')
+  click_button("Create Goal")
+end
+
+def sign_up_as_jake_bot
+  sign_up("jake_bot")
+end
+
+def sign_in_as_jake_bot
+  sign_up_as_jake_bot
+  visit new_session_url
+  fill_in('Username', :with => 'jake_bot')
+  fill_in('Password', :with => 'abcdef')
+  click_button('Sign In')
+end
+
+def create_p_goal_as_jake_bot
+  sign_in_as_jake_bot
+  click_link("New Goal")
+  fill_in('Body', :with => 'eat honey')
+  #check('Completed')
+  check('Private')
   click_button("Create Goal")
 end

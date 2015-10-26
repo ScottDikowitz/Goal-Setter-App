@@ -2,8 +2,9 @@
 <h2>Goals</h2>
 <ul>
 <% @user.goals.each do |goal| %>
-<li> <a href="<%= goal_url(goal) %>"><%= goal.body %></a></li>
-
+<% unless goal.private && current_user.try(:id) != goal.user_id %>
+  <li> <a href="<%= goal_url(goal) %>"><%= goal.body %></a></li>
+<% end %>
 <% end %>
 </ul>
 <hr>
