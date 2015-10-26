@@ -72,7 +72,15 @@ feature "the goals" do
     click_link("New Goal")
     expect(page).to have_content("Create Goal")
   end
+    scenario "creates a new goal" do
+    click_link("New Goal")
+    fill_in('Body', :with => 'graduate')
+    #check('Completed?')
+    #check('A Checkbox')
+    click_button("Create Goal")
 
-
+    expect(page).to have_content("graduate")
+    #expect(page).to have_content("Ongoing")
+  end
 
 end

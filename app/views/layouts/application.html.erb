@@ -5,7 +5,9 @@
 
 </head>
 <body>
-
+  <% unless flash[:error].nil? %>
+  <%= flash[:error].join("<br>").html_safe %>
+  <% end %>
   <% unless current_user.nil? %>
   <%= current_user.username %>
   <form action="<%=session_url%>" method="post">

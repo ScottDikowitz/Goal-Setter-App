@@ -1,3 +1,9 @@
-<h1>Goals</h1>
-<%= @user.username %>'s Profile<hr>
+<h1><%= @user.username %>'s Profile</h1><hr>
+<h2>Goals</h2>
+<ul>
+<% @user.goals.each do |goal| %>
+<li><%= goal.body %></li>
+<% end %>
+</ul>
+<hr>
 <a href="<%= new_goal_url %>">New Goal</a>
